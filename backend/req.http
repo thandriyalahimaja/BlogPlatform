@@ -1,0 +1,95 @@
+###register user
+POST http://localhost:3000/user-api/users
+Content-Type: application/json
+
+{
+    "firstName":"test",
+    "lastName":"demo",
+    "email":"test@gmail.com",
+    "password":"test123",
+    "profileImageUrl":"http://example.com/profile.jpg"
+    }
+
+
+###authenticate user
+POST http://localhost:3000/user-api/users
+Content-Type: application/json
+
+{
+    "firstName":"test",
+    "email":"test@gmail.com",
+    "password":"test123"
+    }
+
+
+###register author
+POST http://localhost:3000/author-api/users
+Content-Type: application/json
+
+{
+    "firstName":"demo",
+    "lastName":"test",
+    "email":"test1@gmail.com",
+    "password":"test123",
+    "profileImageUrl":"http://example.com/profile.jpg"
+    
+    }
+
+###author login
+POST http://localhost:3000/common-api/authenticate
+Content-Type: application/json
+
+{
+    "email": "test1@gmail.com",
+    "password": "test123",
+    "role": "AUTHOR"
+}
+
+###create article(author)
+POST http://localhost:3000/author-api/articles
+Content-Type: application/json
+
+{
+    "author":"698ac2e8be4f3e261c0313e1",
+    "title":"mongodb Basics",
+    "category":"Programming",
+    "content":"mongodb is a nosql database"
+}
+
+###read all articles for author 
+GET http://localhost:3000/author-api/articles/698ac2e8be4f3e261c0313e1
+
+
+###update article
+PUT http://localhost:3000/author-api/articles
+Content-Type: application/json
+
+{
+    "author":"698ac2e8be4f3e261c0313e1",
+    "articleId":"698ac3c1de872c520b70d3f2",
+    "category":"Programming",
+    "title":"Updated JavaScript Basics",
+    "content":"Updated content for JavaScript basics"
+}
+
+###logout 
+GET http://localhost:3000/common-api/logout
+
+###invalid path
+GET http://localhost:3000/author-api/test
+
+###admin block user
+PUT http://localhost:3000/admin-api/users/698abc45bffea77584aaf99a/block
+
+###admin unblock user
+PUT http://localhost:3000/admin-api/users/698abc45bffea77584aaf99a/unblock
+
+###change password
+PUT http://localhost:3000/common-api/change-password
+Content-Type: application/json
+
+{
+    "email":"test1@gmail.com",
+    "currentPassword":"test123",
+    "newPassword":"test456"
+}
